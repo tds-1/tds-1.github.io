@@ -193,6 +193,21 @@ const achievementSection = {
   ]
 };
 
+
+const blogSection = {
+
+  title: "Blogs",
+  subtitle: "With Love for Developing cool stuff, I love to write and teach others what I have learnt.",
+
+  blogs: [
+    {
+      url: "https://medium.com/@tanmaydeepsharma21/ecs-fargate-type-service-deployment-using-terraform-d35c92666246?sk=0c5a7d4eebff799db298b5df97943361",
+      title: "ECS FARGATE type service deployment using terraform.",
+      description: "This post will be covering the basic use of Terraform file to configure a container cluster on cloud and run several services on the cluster."
+    },
+  ]
+};
+
 // Your Achievement Section Include Your Certification Talks and More
 
 const hobbiesSection = {
@@ -232,4 +247,4 @@ const contactInfo = {
 };
 
 
-export { greeting, socialMediaLinks, skillsSection, techStack, workExperiences, openSource, bigProjects, achievementSection, contactInfo, hobbiesSection};
+export { greeting, socialMediaLinks, skillsSection, techStack, workExperiences, openSource, bigProjects, achievementSection, blogSection, contactInfo, hobbiesSection};
