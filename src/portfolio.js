@@ -9,7 +9,7 @@ const greeting = {
   /* Your Summary And Greeting Section */
   username: "Tanmay Deep Sharma",
   title: "Hi all, I'm Tanmay",
-  subTitle: emoji("A final year undergraduate student of Computer Science Engineering in The LNM Institute Of Information Technology, Jaipur, India. I am a Software Developer 🚀 having an experience of building Web applications with Flask/ JavaScript / HTML / Jinja / CSS and some other technologies."),
+  subTitle: emoji("I am a Software Developer 🚀 having an experience of building Web applications with Python / ReactJS / JavaScript / HTML / CSS and some other technologies."),
   resumeLink: "https://drive.google.com/file/d/189npi4sTN7b8wB_qfYWk9L0Jjp9CBo46/view?usp=sharing"                                                                        
 };
 
@@ -31,52 +31,54 @@ const skillsSection = {
   title: "What i do",
   subTitle: "FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
   skills: [
-    emoji("⚡ Develop highly interactive Front end / User Interfaces for web applications"),
-    emoji("⚡ Problem solving ability"),
-    emoji("⚡ Integration of third party services such as AWS using terraform file")
+    "Programming Languages : C, C++ (STL), Python",
+    "Database : My-SQL, MongoDB, Elasticsearch",
+    "Concepts : RESTful API Design/Integration, MVC Architecture",
+    "Frameworks : Flask, Django, React, PostgreSQL",
+    "Others : Git, Docker, SQLAlchemy,Data Structures, Algorithmic Optimization",
   ],
 
 /* Make Sure You include correct Font Awesome Classname to view your icon
 https://fontawesome.com/icons?d=gallery */
 
   softwareSkills: [
-    {
-      skillName: "flask",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "html-5",
-      fontAwesomeClassname: "fab fa-html5"
-    },
-     {
-      skillName: "css3",
-      fontAwesomeClassname: "fab fa-css3-alt"
-    },
-    {
-      skillName: "JavaScript",
-      fontAwesomeClassname: "fab fa-js"
-    },
-    {
-      skillName: "sql-database",
-      fontAwesomeClassname: "fas fa-database"
-    },
-    {
-      skillName: "aws",
-      fontAwesomeClassname: "fab fa-aws"
-    },
-    {
-      skillName: "Github",
-      fontAwesomeClassname: "fab fa-github"
-    },
-    {
-      skillName: "ubuntu",
-      fontAwesomeClassname: "fab fa-ubuntu"
-    },
-    {
-      skillName: "docker",
-      fontAwesomeClassname: "fab fa-docker"
-    },
-  ]
+  {
+    skillName: "flask",
+    fontAwesomeClassname: "fab fa-python"
+  },
+  {
+    skillName: "html-5",
+    fontAwesomeClassname: "fab fa-html5"
+  },
+   {
+    skillName: "css3",
+    fontAwesomeClassname: "fab fa-css3-alt"
+  },
+  {
+    skillName: "JavaScript",
+    fontAwesomeClassname: "fab fa-js"
+  },
+  {
+    skillName: "sql-database",
+    fontAwesomeClassname: "fas fa-database"
+  },
+  {
+    skillName: "aws",
+    fontAwesomeClassname: "fab fa-aws"
+  },
+  {
+    skillName: "Github",
+    fontAwesomeClassname: "fab fa-github"
+  },
+  {
+    skillName: "ubuntu",
+    fontAwesomeClassname: "fab fa-ubuntu"
+  },
+  {
+    skillName: "docker",
+    fontAwesomeClassname: "fab fa-docker"
+  },
+]
 };
 
 // Your top 3 proficient stacks/tech experience
@@ -105,6 +107,15 @@ const techStack = {
 const workExperiences = {
   viewExperiences: true, //Set it to true to show workExperiences Section
   experience: [
+    {
+      role: "Software Developer",  
+      company: "Fairdee Insurtech",
+      companylogo: require("./assets/images/fairdee.jpeg"),
+      date: "December 2020 – Present",
+      descBullets: [
+        "Day to day responsibilities include developing new features for website."
+      ]
+    },    
     {
       role: "Product Intern",  
       company: "Innovaccer",

@@ -33,6 +33,9 @@ function Header() {
             <a href="#achievements">Achievements</a>
           </li>
           <li>
+            <a href="#blogs">Blogs</a>
+          </li>
+          <li>
             <a href="#hobbies">Hobbies</a>
           </li>
           <li>
