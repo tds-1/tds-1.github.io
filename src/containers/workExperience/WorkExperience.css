@@ -1,37 +1,56 @@
-.experience-cards-div {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 1rem 1rem;
-}
-
-.experience-heading {
-    font-size: 56px;
-    font-weight: 400;
+#experience {
+    background: #f5f5f5; /* Light gray background */
+    padding: 3em 0;
 }
 
 .experience-container {
-    display: flex;
-    width: 90%;
-    padding: 20px 10px;
-    margin: 0px auto;
-    margin-top: 2rem;
+    max-width: 1200px; /* Max container width */
+    margin: 0 auto;
+    padding: 0 1em;
 }
 
-.experience-container>* {
-    flex: 1;
+.experience-heading {
+    font-size: 2.5em;
+    text-align: center;
+    color: #333; /* Dark text color */
+    margin-bottom: 2em;
 }
 
-/* Media Query */
-
-@media (max-width: 1380px) {
-    .experience-heading {
-        font-size: 40px;
-    }
+.experience-cards-div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1rem;
 }
 
+/* Experience card styling, modify as per your ExperienceCard component structure */
+.experience-cards-div .experience-card {
+    background: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Card hover effect */
+.experience-cards-div .experience-card:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Shadow deepens on hover */
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .experience-heading {
-        font-size: 30px;
-        text-align: center;
+        font-size: 2em;
     }
+}
+
+@media (max-width: 480px) {
+    .experience-heading {
+        font-size: 1.5em;
+    }
+}
+
+.experience-cards-div.large-content {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.experience-cards-div.small-content {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }

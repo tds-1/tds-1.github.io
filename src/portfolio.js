@@ -9,7 +9,7 @@ const greeting = {
   /* Your Summary And Greeting Section */
   username: "Tanmay Deep Sharma",
   title: "Hi all, I'm Tanmay",
-  subTitle: emoji("I am a Software Developer 🚀 having an experience of building Web applications with Python / ReactJS / JavaScript / HTML / CSS and some other technologies."),
+  subTitle: "I am an innovative Software Engineer with a strong background in the insurtech sector, proficient in Python, AWS, Elasticsearch, and a variety of Al technologies. I have a proven track record in streamlining workflows, automating complex processes, and developing Al-integrated services. My open-source contributions in blockchain technology highlight my versatility and commitment to the broader tech community. Always eager to learn, I have an effective approach to self-paced learning and continually apply this mindset to my work.",
   resumeLink: "https://drive.google.com/file/d/189npi4sTN7b8wB_qfYWk9L0Jjp9CBo46/view?usp=sharing"                                                                        
 };
 
@@ -33,7 +33,6 @@ const skillsSection = {
   skills: [
     "Programming Languages : C, C++ (STL), Python",
     "Database : My-SQL, MongoDB, Elasticsearch",
-    "Concepts : RESTful API Design/Integration, MVC Architecture",
     "Frameworks : Flask, Django, React, PostgreSQL",
     "Others : Git, Docker, SQLAlchemy,Data Structures, Algorithmic Optimization",
   ],
@@ -108,12 +107,36 @@ const workExperiences = {
   viewExperiences: true, //Set it to true to show workExperiences Section
   experience: [
     {
-      role: "Software Developer",  
-      company: "Fairdee Insurtech",
-      companylogo: require("./assets/images/fairdee.jpeg"),
-      date: "December 2020 – Present",
+      role: "Senior Software Engineer",  
+      company: "Qoala Insurtech",
+      companylogo: require("./assets/images/Qoala.png"),
+      date: "March 2023 – Present",
       descBullets: [
-        "Day to day responsibilities include developing new features for website."
+        "Crafted an innovative conversation analyzer tool as an AWS Lambda function, suggesting actionable insights to boost operational efficiency.",
+        "Engineered an AI-integrated service using Flask, which enabled Google Vision-powered image-to-text conversion, the establishment of a structured data extraction pipeline via AWS SQS queues, the analysis of support staff dialogues, and dynamic question-answer formation based on supplied documents.",
+        "Collaborated on the construction of a FastAPI-based Elasticsearch wrapper service, leveraging it to transition price list data onto Elasticsearch, thereby facilitating complex recommendation algorithms, search, and sorting capabilities."
+      ]
+    },    
+    {
+      role: "Software Engineer",  
+      company: "Qoala Insurtech",
+      companylogo: require("./assets/images/Qoala.png"),
+      date: "April 2021 – February 2023",
+      descBullets: [
+        "Spearheaded the redesign and development of accounting workflows and visualization tools. This comprehensive redesign incorporated aspects such as multi-level marketing (MLM) account accounting, affiliate commission allocation, refund management, and credit accounting.",
+        "Devised a robust campaign management system for the seamless deployment of discount coupons, tailoring incentives to stimulate sales according to campaign guidelines.",
+        "Pioneered the introduction of a prepaid credit system and overhauled the existing postpaid credit scheme, augmenting financial flexibility and control.",
+        "Streamlined real-time tracking of credit ledgers, bolstering transaction transparency and accuracy.",
+      ]
+    },    
+    {
+      role: "Software Engineer Intern",  
+      company: "Qoala Insurtech",
+      companylogo: require("./assets/images/Qoala.png"),
+      date: "November 2020 – March 2021",
+      descBullets: [
+        "Optimized the insurance policy purchase process through the automated integration of multiple insurers and refined several backend APIs to minimize system load time and downtime.",
+        "Executed the implementation of a LINE chatbot, effectively automating and manually addressing end-user queries."
       ]
     },    
     {
@@ -155,26 +178,45 @@ const openSource = {
 // Some Big Projects You have worked with your company
 
 const bigProjects = {
-  title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
+  title: "Open Source Contribution",
+  viewExperiences: true, //Set it to true to show workExperiences Section
+  subtitle: "",
   projects: [
     {
-      image: require("./assets/images/yaask.png"),
-      link: "http://yaask.herokuapp.com/"
+      role: "Tech Intern",   
+      company: "Concordium",
+      companylogo: require("./assets/images/concordium.png"),
+      descBullets: [
+        "Created a versatile JAVA SDK for performing a range of operations on the Concordium blockchain. This includes initializing/updating smart contracts, enabling both encrypted and simple transfers of CCD tokens, and facilitating the conversion of transactions to support V2 of the Concordium node."
+      ]
     },
-    {
-      image: require("./assets/images/zwitor.ico"),
-      link: "http://zwitorr.herokuapp.com/"
-    }
   ]
 };
 
+const projects = [
+  {
+    title: "Image Summariser",   
+    description: "The Image Summarizer App is an innovative application that leverages advanced artificial intelligence algorithms to generate concise, meaningful summaries of visual text content.",
+  },
+  {
+    title: "Splitwise Extension",   
+    description: "The Splitwise Extension enhances the original app's functionality by allowing bank statement uploads for efficient bulk splitting and uploading of transactions.",
+  },
+  {
+    title: "Data Analyst AI",   
+    description: "Developed Data Analyst Al, an innovative bot programmed to interpret user queries and generate corresponding SQL commands. Although its current accuracy is a development area, the project demonstrates my ability to pioneer Al-driven solutions in data management.",
+  },
+  {
+    title: "Non-instructor led self learning course",   
+    description: "A web app to make self-paced learning efficient and interesting. Problems are asked to the student in an efficient way to maximize learning. It also deals with hierarchy of problems.",
+  },
+]
 
 // Your Achievement Section Include Your Certification Talks and More
 
 const achievementSection = {
 
-  title: emoji("Achievements 🏆 "),
+  title: "Achievements 🏆 ",
   subtitle: "Achievements that I have made !",
 
   achivementsCards: [
@@ -223,7 +265,7 @@ const blogSection = {
 
 const hobbiesSection = {
 
-  title: emoji("Hobbies "),
+  title: "Hobbies ",
   subtitle: "Things I do for pass time !",
 
   hobbiesCards: [
@@ -251,11 +293,11 @@ const hobbiesSection = {
 
 
 const contactInfo = {
-  title: emoji("Contact Me ☎️"),
+  title: "Contact Me ☎️",
   subtitle: "Discuss a project or just want to say hi? My Inbox is open for all.",
   number: "+91-9799968212",
   email_address: "tanmaydeepsharma21@gmail.com"
 };
 
 
-export { greeting, socialMediaLinks, skillsSection, techStack, workExperiences, openSource, bigProjects, achievementSection, blogSection, contactInfo, hobbiesSection};
+export { greeting, socialMediaLinks, skillsSection, techStack, workExperiences, openSource, bigProjects, achievementSection, blogSection, contactInfo, hobbiesSection, projects};
