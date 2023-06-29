@@ -18,7 +18,7 @@ export default function ProjectPortfolio() {
                             key={index}
                             cardInfo={{
                                 title: project.title,
-                                description: project.description,
+                                description: project.desc,
                             }}
                         />
                     );

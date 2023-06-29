@@ -1,4 +1,9 @@
 /*Blog Cards Layout*/
+#blogs {
+  background: #f5f5f5;
+  padding: 3em 0;
+}
+
 .square {
   width: 440px;
   height: 430px;

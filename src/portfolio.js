@@ -186,9 +186,7 @@ const bigProjects = {
       role: "Tech Intern",   
       company: "Concordium",
       companylogo: require("./assets/images/concordium.png"),
-      descBullets: [
-        "Created a versatile JAVA SDK for performing a range of operations on the Concordium blockchain. This includes initializing/updating smart contracts, enabling both encrypted and simple transfers of CCD tokens, and facilitating the conversion of transactions to support V2 of the Concordium node."
-      ]
+      desc: "Created a versatile JAVA SDK for performing a range of operations on the Concordium blockchain. This includes initializing/updating smart contracts, enabling both encrypted and simple transfers of CCD tokens, and facilitating the conversion of transactions to support V2 of the Concordium node."
     },
   ]
 };
@@ -196,19 +194,19 @@ const bigProjects = {
 const projects = [
   {
     title: "Image Summariser",   
-    description: "The Image Summarizer App is an innovative application that leverages advanced artificial intelligence algorithms to generate concise, meaningful summaries of visual text content.",
+    desc: "The Image Summarizer App is an innovative application that leverages advanced artificial intelligence algorithms to generate concise, meaningful summaries of visual text content.",
   },
   {
     title: "Splitwise Extension",   
-    description: "The Splitwise Extension enhances the original app's functionality by allowing bank statement uploads for efficient bulk splitting and uploading of transactions.",
+    desc: "The Splitwise Extension enhances the original app's functionality by allowing bank statement uploads for efficient bulk splitting and uploading of transactions.",
   },
   {
     title: "Data Analyst AI",   
-    description: "Developed Data Analyst Al, an innovative bot programmed to interpret user queries and generate corresponding SQL commands. Although its current accuracy is a development area, the project demonstrates my ability to pioneer Al-driven solutions in data management.",
+    desc: "Developed Data Analyst Al, an innovative bot programmed to interpret user queries and generate corresponding SQL commands. Although its current accuracy is a development area, the project demonstrates my ability to pioneer Al-driven solutions in data management.",
   },
   {
     title: "Non-instructor led self learning course",   
-    description: "A web app to make self-paced learning efficient and interesting. Problems are asked to the student in an efficient way to maximize learning. It also deals with hierarchy of problems.",
+    desc: "A web app to make self-paced learning efficient and interesting. Problems are asked to the student in an efficient way to maximize learning. It also deals with hierarchy of problems.",
   },
 ]
 
