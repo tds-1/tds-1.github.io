@@ -1,0 +1,83 @@
+.career-snapshot-container {
+  padding: var(--space-lg) 0;
+}
+
+.career-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xxl);
+}
+
+.career-snapshot-card {
+  background-color: var(--navy-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  border: 1px solid var(--navy-lighter);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.career-snapshot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+  border-color: var(--green);
+}
+
+.career-snapshot-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+  color: var(--green);
+}
+
+.career-snapshot-title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--white);
+}
+
+.career-snapshot-description {
+  font-size: var(--fs-md);
+  color: var(--slate);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.career-snapshot-bio {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.career-snapshot-bio p {
+  font-size: var(--fs-lg);
+  color: var(--slate-light);
+  margin-bottom: var(--space-lg);
+  line-height: 1.8;
+}
+
+/* Media Query */
+@media (max-width: 1024px) {
+  .career-snapshot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .career-snapshot-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .career-snapshot-bio {
+    padding: var(--space-lg) 0;
+  }
+  
+  .career-snapshot-bio p {
+    font-size: var(--fs-md);
+  }
+}

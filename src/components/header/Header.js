@@ -1,49 +1,108 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Headroom from "react-headroom";
 import "./Header.css";
-import {greeting, workExperiences} from "../../portfolio";
+import { greeting } from "../../portfolio";
 
-function Header() {
-  const exp = workExperiences.viewExperiences;
+const Header = ({ darkMode, toggleTheme }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+  
+  const navItems = [
+    { name: "Home", url: "#hero" },
+    { name: "What I Do", url: "#career-snapshot" },
+    { name: "Experience", url: "#experience" },
+    { name: "Projects", url: "#projects" },
+    { name: "Skills", url: "#skills" },
+    { name: "AI Work", url: "#ai-innovations" },
+    { name: "Contact", url: "#contact" }
+  ];
+
   return (
     <Headroom>
-      <header className="header">
-        <a href="" className="logo">
-          <span className="grey-color"> &lt;</span>
-          <span className="logo-name">{greeting.username}</span>
-          <span className="grey-color">/&gt;</span>
-        </a>
-        <input className="menu-btn" type="checkbox" id="menu-btn" />
-        <label className="menu-icon" htmlFor="menu-btn">
-          <span className="navicon"></span>
-        </label>
-        <ul className="menu">
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-          { exp === true &&
-            <li>
-              <a href="#experience">Work Experiences</a>
-            </li>
-          }
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
-          <li>
-            <a href="#achievements">Achievements</a>
-          </li>
-          <li>
-            <a href="#blogs">Blogs</a>
-          </li>
-          <li>
-            <a href="#hobbies">Hobbies</a>
-          </li>
-          <li>
-            <a href="#contact">Contact Me</a>
-          </li>
-        </ul>
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="header-container">
+          <a href="#hero" className="logo">
+            <span className="logo-text">TD</span>
+          </a>
+          
+          <div 
+            className={`menu-toggle ${isMenuOpen ? 'active' : ''}`} 
+            onClick={toggleMenu}
+          >
+            <div className="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          
+          <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+            <ul className="nav-list">
+              {navItems.map((item, index) => (
+                <li key={index} className="nav-item">
+                  <a 
+                    href={item.url} 
+                    className="nav-link" 
+                    onClick={closeMenu}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            
+            {/* Container for buttons in mobile view */}
+            <div className="mobile-actions">
+              <div className="nav-button">
+                <a 
+                  href={greeting.resumeLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="resume-button"
+                >
+                  Resume
+                </a>
+              </div>
+              
+              <button 
+                className="theme-toggle-button" 
+                onClick={toggleTheme}
+                aria-label={darkMode ? "Activate light mode" : "Activate dark mode"}
+              >
+                {darkMode ? "☀️" : "🌙"}
+              </button>
+            </div>
+            
+          </nav>
+        </div>
       </header>
     </Headroom>
   );
-}
+};
+
 export default Header;

@@ -1,20 +1,35 @@
-#topButton {
-  visibility:hidden;
+.top-btn-container {
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 5rem;
+  right: 2rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
   z-index: 99;
-  border: none;
-  outline: none;
-  background-color: #55198b;
-  color: white;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 15px;
-  font-size: 25px;
 }
 
-#topButton:hover {
-  background-color: #000;
-  transition: all ease-in-out 0.2s;
+.top-btn-container.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.top-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--navy-light);
+  color: var(--green);
+  border: 1px solid var(--green);
+  cursor: pointer;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  transition: all 0.3s ease;
+}
+
+.top-btn:hover {
+  background-color: var(--green-tint);
+  transform: translateY(-5px);
 }

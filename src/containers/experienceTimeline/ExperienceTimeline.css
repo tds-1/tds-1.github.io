@@ -1,0 +1,253 @@
+.experience-timeline-container {
+  padding: var(--space-xl) 0; /* Increased vertical padding */
+  background-color: var(--navy);
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px; /* Adjust max-width as needed */
+  margin: 0 auto;
+  padding: 0 var(--space-lg); /* Add horizontal padding for spacing */
+}
+
+/* The vertical timeline line - positioned on the left */
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px; /* Thinner line */
+  background-color: var(--navy-lighter); /* Use global variable */
+  top: 0;
+  bottom: 0;
+  left: var(--space-lg); /* Position line on the left with padding */
+  margin-left: -1px;
+  z-index: 1;
+}
+
+/* Individual timeline item container */
+.timeline-item {
+  position: relative;
+  padding-left: calc(var(--space-lg) + var(--space-xl)); /* Space out content from the line */
+  padding-bottom: var(--space-xl); /* Space between items */
+  width: 100%; /* Full width relative to the container */
+  box-sizing: border-box;
+}
+
+/* Remove the last item's bottom padding */
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* The circular marker on the timeline */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 13px; /* Slightly smaller dot */
+  height: 13px;
+  left: var(--space-lg); /* Align dot with the line */
+  top: 8px; /* Adjust vertical alignment if needed */
+  transform: translateX(-50%); /* Center the dot on the line */
+  background-color: var(--green); /* Use global variable */
+  border: 2px solid var(--navy); /* Use global variable */
+  border-radius: 50%;
+  z-index: 2;
+  /* Use global variable */
+  box-shadow: 0 0 10px 2px rgba(var(--green-rgb, 100 255 218), 0.5);
+}
+
+/* Removed alternating left/right styles */
+/* Removed ::after styles (was used for the dot in the old design) */
+
+.timeline-content {
+  padding: var(--space-md) var(--space-lg); /* Adjusted padding */
+  background-color: var(--navy-light); /* Use global variable */
+  position: relative;
+  border-radius: var(--radius-sm); /* Slightly smaller radius */
+  border: 1px solid var(--navy-lighter); /* Use global variable */
+  box-shadow: 0 4px 10px -4px rgba(2, 12, 27, 0.7); /* Maybe adjust shadow color based on theme? */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out, background-color 0.3s ease-out;
+  /* Add perspective for subtle 3D effect on hover */
+  /* perspective: 1000px; */
+}
+
+.timeline-content:hover {
+  transform: translateY(-4px); /* Slightly less lift */
+  box-shadow: 0 8px 18px -6px var(--timeline-shadow-color); /* Enhanced shadow */
+  border-color: var(--green); /* Use global variable */
+  /* Optional: slightly lighten background on hover */
+  /* background-color: var(--navy-lighter); */
+}
+
+/* Arrow pointing from card to the timeline */
+/* Removed arrow styles (::before for .timeline-content) as they don't fit the left-aligned single column well */
+
+.timeline-logo-container {
+  display: none; /* Hide logo for a cleaner look, can be re-enabled if desired */
+  /* Optional: If keeping logo, style it */
+  /* position: absolute; */
+  /* top: var(--space-md); */
+  /* right: var(--space-md); */
+  /* background: var(--timeline-card-border); */
+  /* padding: var(--space-sm); */
+  /* border-radius: var(--radius-sm); */
+}
+
+.timeline-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.timeline-info {
+  margin-top: 0; /* Removed margin since logo is hidden/repositioned */
+}
+
+.timeline-role {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg); /* Adjusted size */
+  font-weight: 600;
+  color: var(--slate-lighter); /* Use global variable */
+  margin-bottom: var(--space-xs);
+  transition: color 0.3s ease-out;
+}
+
+.timeline-content:hover .timeline-role {
+  color: var(--green); /* Use global variable */
+}
+
+.timeline-company {
+  font-family: var(--font-sans);
+  font-size: var(--fs-md); /* Adjusted size */
+  font-weight: 500;
+  color: var(--green); /* Use global variable */
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-date {
+  font-family: var(--font-mono); /* Use mono font for date */
+  font-size: var(--fs-xs); /* Smaller date */
+  color: var(--slate-light); /* Use global variable */
+  margin-bottom: var(--space-md);
+  text-transform: uppercase; /* Optional: Style date */
+}
+
+.timeline-bullets {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: var(--space-md); /* Add space before bullets */
+}
+
+.timeline-bullet-item {
+  position: relative;
+  padding-left: var(--space-lg); /* Indent bullets */
+  margin-bottom: var(--space-sm);
+  color: var(--slate); /* Use global variable */
+  line-height: 1.6; /* Slightly increased line-height for readability */
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+}
+
+/* Bullet marker */
+.timeline-bullet-item::before {
+  content: "▹"; /* Keep the arrow marker */
+  position: absolute;
+  left: 0;
+  top: 1px; /* Fine-tune vertical alignment */
+  color: var(--green); /* Use global variable */
+  font-size: var(--fs-md); /* Adjust marker size */
+  line-height: inherit; /* Inherit line height */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Smaller Desktops / Tablets */
+@media (max-width: 768px) {
+  .timeline {
+    padding: 0 var(--space-md); /* Adjust padding */
+  }
+
+  .timeline::before {
+    left: var(--space-md); /* Adjust line position */
+  }
+
+  .timeline-item {
+    padding-left: calc(var(--space-md) + var(--space-lg)); /* Adjust content padding */
+  }
+
+  .timeline-item::before {
+    left: var(--space-md); /* Adjust dot position */
+    width: 11px; /* Adjust dot size */
+    height: 11px;
+  }
+
+  .timeline-role {
+    font-size: var(--fs-md); /* Slightly smaller role */
+  }
+
+  .timeline-company {
+    font-size: var(--fs-sm); /* Slightly smaller company */
+  }
+
+  .timeline-bullet-item {
+    font-size: var(--fs-xs); /* Slightly smaller bullets */
+    padding-left: var(--space-md); /* Adjust bullet indent */
+  }
+  .timeline-bullet-item::before {
+     font-size: var(--fs-sm);
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  .experience-timeline-container {
+    padding: var(--space-lg) 0; /* Adjust vertical padding */
+  }
+  
+  .timeline {
+    padding: 0 var(--space-sm); /* Further reduce padding */
+  }
+
+  .timeline::before {
+    left: var(--space-sm); /* Adjust line position */
+  }
+
+  .timeline-item {
+    padding-left: calc(var(--space-sm) + var(--space-md)); /* Adjust content padding */
+    padding-bottom: var(--space-lg); /* Adjust spacing */
+  }
+
+  .timeline-item::before {
+    left: var(--space-sm); /* Adjust dot position */
+    width: 9px; /* Smaller dot */
+    height: 9px;
+    border-width: 1px;
+  }
+
+  .timeline-content {
+    padding: var(--space-sm) var(--space-md); /* Adjust card padding */
+  }
+
+   .timeline-role {
+    font-size: var(--fs-sm); /* Smaller role */
+  }
+
+  .timeline-company {
+    font-size: var(--fs-xs); /* Smaller company */
+  }
+  
+  .timeline-date {
+      font-size: calc(var(--fs-xs) * 0.9); /* Even smaller date */
+  }
+
+  .timeline-bullet-item {
+    font-size: var(--fs-xs); 
+    padding-left: var(--space-sm); /* Adjust bullet indent */
+    margin-bottom: var(--space-xs);
+    line-height: 1.5;
+  }
+   .timeline-bullet-item::before {
+     font-size: var(--fs-xs);
+     left: -2px; /* Nudge marker slightly */
+  }
+}

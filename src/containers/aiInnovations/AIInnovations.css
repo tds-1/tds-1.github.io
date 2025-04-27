@@ -1,0 +1,108 @@
+.ai-innovations-container {
+  padding: var(--space-lg) 0;
+}
+
+.ai-innovations-intro {
+  max-width: 800px;
+  margin: 0 auto var(--space-xxl);
+  text-align: center;
+}
+
+.intro-text {
+  font-size: var(--fs-lg);
+  color: var(--slate-light);
+  line-height: 1.8;
+}
+
+.innovations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.innovation-card {
+  display: flex;
+  background-color: var(--navy-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  border: 1px solid var(--navy-lighter);
+  transition: all 0.3s ease;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.innovation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+  border-color: var(--green);
+}
+
+.innovation-icon {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--green-tint);
+  border-radius: 50%;
+  color: var(--green);
+  font-size: 1.5rem;
+}
+
+.innovation-content {
+  flex-grow: 1;
+}
+
+.innovation-title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--space-md);
+}
+
+.innovation-description {
+  font-size: var(--fs-md);
+  color: var(--slate);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.innovation-tech {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-sm);
+}
+
+.tech-label {
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: var(--space-xs);
+}
+
+.tech-value {
+  color: var(--slate-light);
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  .innovation-card {
+    flex-direction: column;
+    padding: var(--space-lg);
+  }
+  
+  .innovation-icon {
+    margin-bottom: var(--space-md);
+  }
+  
+  .ai-innovations-intro {
+    padding: 0 var(--space-md);
+  }
+  
+  .intro-text {
+    font-size: var(--fs-md);
+  }
+}

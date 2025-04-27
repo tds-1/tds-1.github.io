@@ -1,22 +1,26 @@
 import React from "react";
 import "./SoftwareSkill.css";
-import { skillsSection } from "../../portfolio";
 
-export default function SoftwareSkill() {
+const SoftwareSkill = ({ skills, onSkillClick, activeSkill }) => {
   return (
-    <div>
-      <div className="software-skills-main-div">
-        <ul className="dev-icons">
-          {skillsSection.softwareSkills.map(skills => {
-            return (
-              <li className="software-skill-inline" name={skills.skillName}>
-                <i className={skills.fontAwesomeClassname}></i>
-                  <p>{skills.skillName}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <div className="software-skills-main-div">
+      <ul className="dev-icons">
+        {skills.map((skill, index) => {
+          return (
+            <li 
+              key={index}
+              className={`software-skill-inline ${activeSkill === index ? 'active' : ''}`} 
+              name={skill.skillName}
+              onClick={() => onSkillClick(index)}
+            >
+              <i className={skill.fontAwesomeClassname}></i>
+              <p>{skill.skillName}</p>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
-}
+};
+
+export default SoftwareSkill;

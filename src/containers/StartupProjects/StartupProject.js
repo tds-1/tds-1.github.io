@@ -8,7 +8,7 @@ export default function StartupProjects() {
     if(bigProjects.viewExperiences){
         return (
             <div id="startup-projects">
-                <Fade bottom duration={1000} distance="20px">
+                <Fade bottom duration={200} distance="20px">
                 <div className="experience-container" id="workExperience">
                     <h1 className="experience-heading">{bigProjects.title}</h1>
                     <div className={`experience-cards-div large-content`}>

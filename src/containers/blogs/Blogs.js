@@ -6,7 +6,7 @@ import { Fade } from "react-reveal";
 
 export default function Blogs() {
   return (
-    <Fade bottom duration={1000} distance="20px">
+    <Fade bottom duration={200} distance="20px">
     <div  id="blogs" className="main">
       <div className="blog-header">
         <h1 className="blog-header-text">{blogSection.title}</h1>
