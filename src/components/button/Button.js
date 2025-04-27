@@ -1,12 +1,17 @@
 import React from "react";
 import "./Button.css";
 
-export default function Button({ text, className, href, newTab }) {
+const Button = ({ text, href, newTab, theme = "primary", className = "" }) => {
   return (
-    <div className={className}>
-      <a class="main-button" href={href} target={newTab && "_blank"}>
-        {text}
-      </a>
-    </div>
+    <a 
+      className={`button ${theme === "primary" ? "button-primary" : "button-secondary"} ${className}`} 
+      href={href} 
+      target={newTab ? "_blank" : "_self"}
+      rel={newTab ? "noopener noreferrer" : ""}
+    >
+      {text}
+    </a>
   );
-}
+};
+
+export default Button;

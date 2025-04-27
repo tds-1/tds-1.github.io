@@ -1,45 +1,53 @@
-.main-button {
-  background-color: #55198b;
-  border: solid 1px #55198b;
-  color: white;
-  font-weight: 700;
-  width: max-content;
-  padding: 13px 22px;
-  margin-right: 50px;
-  text-transform: uppercase;
-  border-radius: 6px;
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: var(--fs-md);
+  font-weight: 500;
   text-align: center;
-  text-decoration: none;
-  display: block;
-  margin-top: 20px;
-  font-size: 16px;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: all .3s ease-in-out 0s;
+  margin-right: var(--space-md);
+  text-decoration: none;
+  letter-spacing: 0.5px;
 }
-.main-button:hover {
-  background-color: #ffffff;
-  color: #55198b;
-  transition: all .3s ease 0s;
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.button-primary {
+  background-color: var(--green);
+  color: var(--navy);
+  border: 1px solid var(--green);
+}
+
+.button-primary:hover {
+  background-color: transparent;
+  color: var(--green);
   transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(100, 255, 218, 0.5);
 }
-.project-button{
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
 }
-.project-button > .main-button{
-  margin-right: 0 !important;
+
+.button-secondary:hover {
+  background-color: var(--green-tint);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(100, 255, 218, 0.5);
 }
+
 /* Media Query */
 @media (max-width: 768px) {
-  .main-button {
-    font-size: 15px;
-    padding: 12px 18px;
-    margin-right: 0px;
-  }
-}
-@media (max-width: 320px) {
-  .main-button {
-    font-size: 12px;
+  .button {
+    padding: 10px 20px;
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-md);
+    width: 100%;
+    margin-right: 0;
   }
 }
