@@ -44,7 +44,6 @@ export function Contact() {
     // For now, just simulate form submission
     setTimeout(() => {
       setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '' })
       setIsSubmitting(false)
     }, 1000)
     
