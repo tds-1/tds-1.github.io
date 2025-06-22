@@ -1,0 +1,15 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chatwootGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1f8a70;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#25b3a2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Chat bubble icon -->
+  <rect x="8" y="10" width="24" height="20" rx="6" fill="url(#chatwootGradient)"/>
+  <circle cx="14" cy="18" r="2" fill="white"/>
+  <circle cx="20" cy="18" r="2" fill="white"/>
+  <circle cx="26" cy="18" r="2" fill="white"/>
+  <!-- Company name -->
+  <text x="38" y="25" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="currentColor">Chatwoot</text>
+</svg>
