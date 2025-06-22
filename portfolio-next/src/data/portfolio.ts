@@ -66,8 +66,8 @@ export const skills = [
 
 export const experience = [
   {
-    id: "chatwoot-senior",
-    role: "Senior Software Engineer",
+    id: "chatwoot-engineer",
+    role: "Engineer",
     company: "Chatwoot",
     period: "May 2025 – Present",
     achievements: [

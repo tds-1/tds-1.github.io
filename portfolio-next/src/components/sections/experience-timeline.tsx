@@ -84,8 +84,8 @@ export function ExperienceTimeline() {
                       key={achIndex}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: (index * 0.1) + (achIndex * 0.1) }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.3 }}
                       className="flex items-start gap-3"
                     >
                       <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
@@ -101,10 +101,10 @@ export function ExperienceTimeline() {
                   {exp.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skillIndex}
-                      initial={{ opacity: 0, scale: 0.8 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: (index * 0.1) + (skillIndex * 0.05) }}
+                      viewport={{ once: true, margin: "-20px" }}
+                      transition={{ duration: 0.2 }}
                       whileHover={{ scale: 1.05 }}
                     >
                       <Badge variant="secondary" className="hover:bg-primary/20 transition-colors">

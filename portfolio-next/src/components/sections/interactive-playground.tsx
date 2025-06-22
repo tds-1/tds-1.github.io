@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -189,9 +189,21 @@ function ColorPaletteGenerator() {
   }
 
   const copyColor = async (color: string) => {
-    await navigator.clipboard.writeText(color)
-    setCopied(color)
-    setTimeout(() => setCopied(null), 2000)
+    try {
+      await navigator.clipboard.writeText(color)
+      setCopied(color)
+      setTimeout(() => setCopied(null), 2000)
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = color
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      setCopied(color)
+      setTimeout(() => setCopied(null), 2000)
+    }
   }
 
   useEffect(() => {
@@ -212,15 +224,29 @@ function ColorPaletteGenerator() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: index * 0.1 }}
-            className="aspect-square rounded-lg cursor-pointer hover:scale-105 transition-transform relative"
+            className="aspect-square rounded-lg cursor-pointer hover:scale-105 transition-all relative group border-2 border-transparent hover:border-primary/30"
             style={{ backgroundColor: color }}
             onClick={() => copyColor(color)}
           >
-            {copied === color && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <CheckCircle className="h-6 w-6 text-white" />
-              </div>
-            )}
+            {/* Copy feedback overlay */}
+            <AnimatePresence>
+              {copied === color && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 rounded-lg backdrop-blur-sm"
+                >
+                  <CheckCircle className="h-6 w-6 text-green-400 mb-1" />
+                  <span className="text-xs text-white font-medium">Copied!</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            {/* Hover tooltip */}
+            <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-white text-xs p-1 rounded-b-lg truncate">
+              {color}
+            </div>
           </motion.div>
         ))}
       </div>
@@ -612,9 +638,33 @@ function MathQuiz() {
 export function InteractivePlayground() {
   const [selectedTool, setSelectedTool] = useState<string | null>(null)
   const [filter, setFilter] = useState<string>("all")
+  const selectedToolRef = useRef<HTMLDivElement>(null)
 
   const categories = Array.from(new Set(tools.map(t => t.category)))
   const filteredTools = filter === "all" ? tools : tools.filter(t => t.category === filter)
+
+  const handleToolSelect = (toolId: string) => {
+    setSelectedTool(toolId)
+    // Scroll to the selected tool with smooth animation
+    setTimeout(() => {
+      selectedToolRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      })
+    }, 300) // Small delay to ensure the component has rendered
+  }
+
+  // Auto-scroll when tool is selected
+  useEffect(() => {
+    if (selectedTool && selectedToolRef.current) {
+      selectedToolRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      })
+    }
+  }, [selectedTool])
 
   const renderTool = () => {
     switch (selectedTool) {
@@ -688,7 +738,7 @@ export function InteractivePlayground() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="cursor-pointer"
-                onClick={() => setSelectedTool(tool.id)}
+                onClick={() => handleToolSelect(tool.id)}
               >
                 <Card className="h-full hover:shadow-lg transition-shadow bg-card/50 backdrop-blur-sm">
                   <CardHeader>
@@ -714,6 +764,7 @@ export function InteractivePlayground() {
         ) : (
           /* Selected Tool View */
           <motion.div
+            ref={selectedToolRef}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-2xl mx-auto"
