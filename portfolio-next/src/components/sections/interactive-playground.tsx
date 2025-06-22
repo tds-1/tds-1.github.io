@@ -82,7 +82,7 @@ const tools: Tool[] = [
     id: "api-simulator",
     title: "API Response Simulator",
     description: "Interactive API testing with real-time responses and analytics",
-    icon: <Code className="h-5 w-5" />,
+    icon: <Network className="h-5 w-5" />,
     category: "Developer"
   }
 ]

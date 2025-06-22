@@ -32,7 +32,12 @@ export const skills = [
       { name: "Machine Learning", level: 90, years: 3 },
       { name: "Deep Learning", level: 85, years: 2.5 },
       { name: "NLP", level: 88, years: 3 },
-      { name: "Computer Vision", level: 80, years: 2 }
+      { name: "Computer Vision", level: 80, years: 2 },
+      { name: "LLMs", level: 88, years: 2 },
+      { name: "AI Agents", level: 85, years: 1.5 },
+      { name: "MCP (Model Context Protocol)", level: 80, years: 1 },
+      { name: "Gateway Orchestration", level: 82, years: 1.5 },
+      { name: "n8n Workflow Automation", level: 78, years: 1 }
     ]
   },
   {
@@ -50,7 +55,9 @@ export const skills = [
       { name: "AWS", level: 85, years: 3 },
       { name: "Docker", level: 80, years: 2.5 },
       { name: "Terraform", level: 75, years: 2 },
-      { name: "Kubernetes", level: 70, years: 1.5 }
+      { name: "Kubernetes", level: 70, years: 1.5 },
+      { name: "Vector Databases", level: 78, years: 1.5 },
+      { name: "AI Infrastructure", level: 80, years: 2 }
     ]
   },
   {
@@ -59,7 +66,9 @@ export const skills = [
       { name: "PostgreSQL", level: 85, years: 3.5 },
       { name: "Elasticsearch", level: 88, years: 3 },
       { name: "Redis", level: 80, years: 2.5 },
-      { name: "MongoDB", level: 75, years: 2 }
+      { name: "MongoDB", level: 75, years: 2 },
+      { name: "RAG Systems", level: 85, years: 1.5 },
+      { name: "Embedding Models", level: 83, years: 2 }
     ]
   }
 ]
