@@ -9,7 +9,7 @@ export function ChatwootLogo({ className }: LogoProps) {
   return (
     <div className={cn("w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center p-2", className)}>
       <Image
-        src="/images/companies/chatwoot.svg"
+        src="/images/companies/chatwoot.png"
         alt="Chatwoot Logo"
         width={40}
         height={40}
