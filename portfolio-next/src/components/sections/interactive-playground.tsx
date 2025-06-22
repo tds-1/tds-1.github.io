@@ -79,9 +79,9 @@ const tools: Tool[] = [
     category: "Developer"
   },
   {
-    id: "json-formatter",
-    title: "JSON Formatter",
-    description: "Format and validate JSON data",
+    id: "api-simulator",
+    title: "API Response Simulator",
+    description: "Interactive API testing with real-time responses and analytics",
     icon: <Code className="h-5 w-5" />,
     category: "Developer"
   }
@@ -493,7 +493,7 @@ function TypingSpeedTest() {
       <textarea
         value={userInput}
         onChange={(e) => handleInputChange(e.target.value)}
-        className="w-full p-3 border rounded-lg resize-none h-24"
+        className="w-full p-3 border rounded-lg resize-none h-24 bg-background text-foreground"
         placeholder="Start typing the text above..."
         disabled={!!endTime}
       />
@@ -618,7 +618,7 @@ function MathQuiz() {
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && checkAnswer()}
-              className="w-24 p-2 border rounded text-center"
+              className="w-24 p-2 border rounded text-center bg-background text-foreground"
               autoFocus
             />
             <Button onClick={checkAnswer} disabled={!userAnswer}>
@@ -631,6 +631,225 @@ function MathQuiz() {
           )}
         </div>
       )}
+    </div>
+  )
+}
+
+function APISimulator() {
+  const [selectedEndpoint, setSelectedEndpoint] = useState<string>("users")
+  const [isLoading, setIsLoading] = useState(false)
+  const [response, setResponse] = useState<any>(null)
+  const [metrics, setMetrics] = useState({
+    responseTime: 0,
+    statusCode: 200,
+    dataSize: "0 KB"
+  })
+
+  const endpoints = {
+    users: {
+      method: "GET",
+      url: "/api/v1/users",
+      description: "Fetch user profiles with pagination",
+      response: {
+        status: "success",
+        data: [
+          {
+            id: 1,
+            name: "Tanmay Deep Sharma",
+            role: "Senior Software Engineer",
+            department: "Engineering",
+            skills: ["Python", "AI/ML", "FastAPI", "AWS"],
+            projects_count: 15,
+            last_active: "2024-12-22T10:30:00Z"
+          },
+          {
+            id: 2,
+            name: "Sarah Chen",
+            role: "Data Scientist",
+            department: "Analytics",
+            skills: ["Python", "TensorFlow", "SQL", "Docker"],
+            projects_count: 8,
+            last_active: "2024-12-22T09:15:00Z"
+          }
+        ],
+        pagination: {
+          page: 1,
+          total_pages: 5,
+          total_items: 47
+        }
+      }
+    },
+    analytics: {
+      method: "POST",
+      url: "/api/v1/analytics/events",
+      description: "Track user engagement analytics",
+      response: {
+        status: "success",
+        event_id: "evt_" + Math.random().toString(36).substring(2, 15),
+        processed_at: new Date().toISOString(),
+        metrics: {
+          daily_active_users: 1247,
+          session_duration_avg: "8m 32s",
+          conversion_rate: "3.4%",
+          top_features: [
+            { name: "Interactive Terminal", usage: "67%" },
+            { name: "Color Palette", usage: "45%" },
+            { name: "Memory Game", usage: "32%" }
+          ]
+        }
+      }
+    },
+    ai_insights: {
+      method: "GET",
+      url: "/api/v1/ai/insights",
+      description: "AI-powered data insights and recommendations",
+      response: {
+        status: "success",
+        insights: [
+          {
+            type: "performance",
+            confidence: 0.94,
+            message: "API response time improved by 23% this week",
+            recommendation: "Consider caching frequently accessed endpoints",
+            impact: "high"
+          },
+          {
+            type: "user_behavior",
+            confidence: 0.87,
+            message: "Users spend 40% more time in interactive tools",
+            recommendation: "Expand interactive feature set",
+            impact: "medium"
+          }
+        ],
+        model_version: "v2.1.3",
+        processed_at: new Date().toISOString()
+      }
+    }
+  }
+
+  const simulateAPICall = async () => {
+    setIsLoading(true)
+    setResponse(null)
+    
+    // Simulate network delay
+    const delay = 200 + Math.random() * 800
+    const startTime = Date.now()
+    
+    await new Promise(resolve => setTimeout(resolve, delay))
+    
+    const endTime = Date.now()
+    const responseTime = endTime - startTime
+    
+    const endpoint = endpoints[selectedEndpoint as keyof typeof endpoints]
+    const responseData = endpoint.response
+    const dataSize = (JSON.stringify(responseData).length / 1024).toFixed(1)
+    
+    setMetrics({
+      responseTime,
+      statusCode: 200,
+      dataSize: `${dataSize} KB`
+    })
+    
+    setResponse(responseData)
+    setIsLoading(false)
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Endpoint Selection */}
+      <div className="space-y-4">
+        <h4 className="font-semibold">Select API Endpoint</h4>
+        <div className="grid gap-2">
+          {Object.entries(endpoints).map(([key, endpoint]) => (
+            <motion.div
+              key={key}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`p-3 border rounded-lg cursor-pointer transition-colors ${
+                selectedEndpoint === key 
+                  ? 'border-primary bg-primary/10' 
+                  : 'border-border hover:border-primary/50'
+              }`}
+              onClick={() => setSelectedEndpoint(key)}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant={endpoint.method === 'GET' ? 'default' : 'secondary'} className="text-xs">
+                    {endpoint.method}
+                  </Badge>
+                  <code className="text-sm font-mono">{endpoint.url}</code>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground">{endpoint.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Execute Button */}
+      <Button 
+        onClick={simulateAPICall} 
+        disabled={isLoading}
+        className="w-full"
+      >
+        {isLoading ? (
+          <>
+            <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+            Making API Call...
+          </>
+        ) : (
+          <>
+            <Zap className="h-4 w-4 mr-2" />
+            Execute API Call
+          </>
+        )}
+      </Button>
+
+      {/* Metrics */}
+      {response && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="grid grid-cols-3 gap-4"
+        >
+          <div className="text-center p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+            <div className="text-green-600 font-mono text-lg">{metrics.statusCode}</div>
+            <div className="text-xs text-muted-foreground">Status</div>
+          </div>
+          <div className="text-center p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+            <div className="text-blue-600 font-mono text-lg">{metrics.responseTime}ms</div>
+            <div className="text-xs text-muted-foreground">Response Time</div>
+          </div>
+          <div className="text-center p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+            <div className="text-purple-600 font-mono text-lg">{metrics.dataSize}</div>
+            <div className="text-xs text-muted-foreground">Data Size</div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Response Display */}
+      {response && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-2"
+        >
+          <h5 className="font-medium flex items-center gap-2">
+            <CheckCircle className="h-4 w-4 text-green-500" />
+            Response Body
+          </h5>
+          <div className="bg-muted/50 border rounded-lg p-4 max-h-64 overflow-y-auto">
+            <pre className="text-xs font-mono whitespace-pre-wrap">
+              {JSON.stringify(response, null, 2)}
+            </pre>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Info */}
+      <div className="text-xs text-muted-foreground text-center p-3 bg-muted/30 rounded-lg">
+        💡 This simulates real API interactions with realistic response times and data structures
+      </div>
     </div>
   )
 }
@@ -680,6 +899,8 @@ export function InteractivePlayground() {
         return <TypingSpeedTest />
       case "math-quiz":
         return <MathQuiz />
+      case "api-simulator":
+        return <APISimulator />
       default:
         return <div className="text-center text-muted-foreground">Tool not yet implemented. Check back soon!</div>
     }
